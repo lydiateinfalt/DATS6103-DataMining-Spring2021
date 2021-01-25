@@ -1,15 +1,15 @@
 # Lydia Teinfalt
-# DATS 6103: Data Mining
-# Spring 2021
-# 1/21/2021
-#=================================================================
-# Class_Ex1:
-# Write python program that converts seconds to
+# DATS 6103: Spring 2021
+# Homework 1
+# 01/24/2021
+# =================================================================
+# Class_Ex1: 
+# Write python program that converts seconds to 
 # (x Hour, x min, x seconds)
 # ----------------------------------------------------------------
 #
-print("=================================================================")
-print("Class_Ex1")
+print("Written by: Lydia Teinfalt")
+print("Class_Ex1: Write python program that converts seconds to ")
 seconds = eval(input('Enter the time in seconds (positive integer please): '))
 hours = (seconds // 3600)
 
@@ -20,13 +20,16 @@ else:
     minutes = (seconds - (hours * 3600)) // 60
     seconds = seconds - (hours * 3600) - (minutes * 60)
 
-print("Converted time: ", hours, "hour(s)", minutes, "minute(s)", seconds, "seconds")
+print("Converted time: ", hours, "hour(s)", minutes, "minute(s)", seconds, "second(s)")
 
+print('#',75*"-")
 # =================================================================
-# Class_Ex2:
+# Class_Ex2: 
 # Write a python program to print all the different arrangements of the
 # letters A, B, and C. Each string printed is a permutation of ABC.
 # ----------------------------------------------------------------
+print("Class_Ex2: Print all the different arrangements of the  letters A, B, and C. Each string printed is a permutation of ABC")
+
 def swap(char, i, j):
     temp = char[i]
     char[i] = char[j]
@@ -48,16 +51,14 @@ def permute(str, left, right):
 
 
 x = "ABC"
-print("=================================================================")
-print("Class_Ex2")
-print("String =", x)
+print("Letters =", x)
 x_length = len(x)
 x_list = list(x)
 permute(x_list, 0, x_length)
 
-
+print('#',75*"-")
 # =================================================================
-# Class_Ex3:
+# Class_Ex3: 
 # Write a python program to print all the different arrangements of the
 # letters A, B, C and D. Each string printed is a permutation of ABCD.
 # ----------------------------------------------------------------
@@ -83,20 +84,19 @@ def permute(str, left, right):
 
 
 x = "ABCD"
-print("=================================================================")
-print("Class_Ex3")
-print("String =", x)
+print("Class_Ex3: Print arrangements of the letters A, B, C and D. Each string printed is a permutation of ABCD")
+print("Letters =", x)
 x_length = len(x)
 x_list = list(x)
 permute(x_list, 0, x_length)
 
+print('#',75*"-")
 # =================================================================
-# Class_Ex4:
-# Suppose we wish to draw a triangular tree, and its height is provided
+# Class_Ex4: 
+# Suppose we wish to draw a triangular tree, and its height is provided 
 # by the user.
 # ----------------------------------------------------------------
 
-print("=================================================================")
 print("Class_Ex4")
 rows=eval(input('Please specify the height or the number of rows the tree should have: '))
 j = rows-1
@@ -106,11 +106,12 @@ for i in range(1,end+1,2):
      print(' '*j+i*'*')
      j=j-1
 
-
+print('#',75*"-")
 # =================================================================
-# Class_Ex5:
+# Class_Ex5: 
 # Write python program to print prime numbers up to a specified values.
 # ----------------------------------------------------------------
+
 def isprime(n):
     prime = bool
     for j in range(2, n):
@@ -123,8 +124,8 @@ def isprime(n):
             break
     return prime
 
+print('#',75*"-")
 
-print("=================================================================")
 print("Class_Ex5: Write python program to print prime numbers up to a specified values. ")
 upper = eval(input('Enter max number for prime number list: '))
 print("Max number = ", upper)
@@ -136,3 +137,5 @@ if upper >= 1 and type(upper) == int:
             print(i)
 else:
     print("Please enter an integer equal to 1 or greater")
+
+print('#',75*"-")
