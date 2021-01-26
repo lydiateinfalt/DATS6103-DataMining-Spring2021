@@ -4,7 +4,6 @@
 # ----------------------------------------------------------------
 import random
 
-random.seed(33)
 die = random.randint(1, 6)
 print(die)
 print('#',75*"-")
