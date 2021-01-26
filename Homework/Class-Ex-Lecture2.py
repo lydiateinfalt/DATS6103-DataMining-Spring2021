@@ -10,11 +10,7 @@
 import random
 print("Class_Ex1:")
 
-<<<<<<< HEAD
 die = random.randrange(1, 7)
-=======
-die = random.randint(1, 6)
->>>>>>> e1c2877a8f498da85aa559375484590ca8e91692
 print(die)
 
 print("+--------+")
