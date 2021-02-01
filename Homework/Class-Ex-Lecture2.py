@@ -1,7 +1,7 @@
 # Lydia Teinfalt
 # DATS 6103: Data Mining
 # Spring 2021
-# 01/21/2021
+# 02/01/2021
 # Lecture 2 Exercises
 # =================================================================
 # Class_Ex1:
@@ -132,6 +132,7 @@ print('#', 75*"-")
 # Randomly Permuting a List
 # ----------------------------------------------------------------
 print("Class_Ex3: Randomly permuting a List. ")
+
 def random_permute(a):
     import random
     new_list= a[:]
@@ -172,8 +173,8 @@ print('#', 75*"-")
 # ----------------------------------------------------------------
 print("Class_Ex6: Write a program to check if an element exists in a tuple or not.")
 t = tuple("apocalypse")
-# n = "a"
-n = 1
+n = "a" # example of element that exists
+# n = 1
 if n in t:
     print("Yes, element", n, "is in tuple", t)
 else:
@@ -185,9 +186,9 @@ print('#', 75*"-")
 # Write a program to check a list is empty or not.
 # ----------------------------------------------------------------
 print("Class_Ex7: Write a program to check a list is empty or not.")
-# mylist = ['a', 8.9, 99, [10,20]]
+mylist = ['a', 8.9, 99, [10,20]]
 # mylist = [1, 2, 'Amir', 19, -3, 'end']
-mylist = []
+# mylist = []
 
 if not mylist:
     print("List is empty")
