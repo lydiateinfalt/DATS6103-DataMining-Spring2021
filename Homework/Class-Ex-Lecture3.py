@@ -3,8 +3,125 @@
 # DATS 6103: Data Mining
 # Spring 2021
 # 02/01/2021
-# Lecture 3 Exercises
+# Homework 3 and Lecture 3 Exercises
 # =========================
+
+# =================================================================
+# E.1:
+# Write a script to find duplicates from an array (define an array with some duplicates on it). If
+# you use built in function in python explain the methods and how this methods are working.
+# =================================================================
+"""
+def find_dups (l1, l2):
+    l3 = []
+    for item in l1:
+        if item in l2:
+            l3 += [item]
+    return l2
+
+
+def find_unique (l1, l2):
+    l3 = []
+    for item in l1:
+        if item not in l2:
+            l3 += [item]
+    return l3
+
+def main():
+    l1 = [1, 2, 'Amir', 19, -3, 'end']
+    l2 = [-1, 3.8, "Twilight", 'Would it were so simple', 19]
+    dups = find_dups(l1, l2)
+    no_dups = find_unique(l1, l2)
+    print('list 1', l1)
+    print('list 2', l2)
+    print("list of duplicates ", dups)
+    print('list of unique values', no_dups)
+    l3 = [item for item in l1 if item in l2]
+    l4 = [item for item in l1 if not item in l2]
+    print("l3", l3)
+    print("l4", l4)
+
+main()
+"""
+# =================================================================
+# E.2: Write a script that finds all such numbers which are divisible by 2 and 5, less than 1000. If you
+# use built in function in python explain the methods and how this methods are working.
+# =================================================================
+"""
+def div_2(n):
+    if n%2 == 0:
+        return True
+    else:
+        return False
+
+def div_5(n):
+    if n%5 == 0:
+        return True
+    else:
+        return False
+l = []
+for i in range (0,1000):
+    if div_2(i) and div_5(i):
+        l += [i]
+print(l)
+"""
+# =================================================================
+# E.3:
+# Write a Python class to convert a roman numeral to an integer. Hint: (Use the following symbols
+# and numerals Wiki )
+# =================================================================
+class romans_num_int():
+    def int_converter(self, roman):
+        roman_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        nines = {'IX': 9, 'XC': 90, 'CM': 900}
+        sum = 0
+        l = []
+        last = len(roman)
+        print(roman)
+        index = last
+        pos = 0
+        while index > 0 :
+            key = roman[index - 2] + roman[index - 1]
+            if pos < 3 and key in nines:
+                l += [nines[key]]
+                index = index - 2
+                pos += 1
+            elif roman[index-1] in roman_dict:
+                l += [roman_dict[roman[index-1]]]
+                index = index - 1
+        print(l)
+
+        for item in l:
+            sum = sum + item
+        return sum
+
+print(romans_num_int().int_converter("MMCDXXI"))
+print(romans_num_int().int_converter("XXXIX"))
+print(romans_num_int().int_converter("DCCLXXXIX"))
+print(romans_num_int().int_converter("MIX"))
+print(romans_num_int().int_converter("MDCCLXXVI"))
+print(romans_num_int().int_converter("MCMXVIII"))
+print(romans_num_int().int_converter("CMXCIX"))
+print(romans_num_int().int_converter("MMMCMXCIX"))
+
+
+
+
+
+
+
+# =================================================================
+# E.4:
+# Write a Python class to find sum the three elements of the given array to zero.
+# Given: [-20, -10, -6, -4, 3, 4, 7, 10]
+# Output : [[-10, 3, 7], [-6, -4, 10]]
+# =================================================================
+
+
+# =================================================================
+# E.5:
+# Answer all the class exercise questions (Lecture 3) and submit it (Check the instructions).
+
 # =================================================================
 # Class_Ex1:
 # Writes a python script (use class) to simulate a Stopwatch .
@@ -14,21 +131,21 @@
 # ----------------------------------------------------------------
 import math
 from math import pi
-
+"""
 print("Class_Ex1: Write a python script (use lass) to simulate a Stopwatch.")
-
 import time
 
+class stopwatch:
+    def __init__(self):
+        time.clock()
 
 def start():
     start = time.time()
     return start
 
-
 def stop():
     end = time.time()
     return end
-
 
 def convert_time(sec):
     mins = sec // 60
@@ -38,11 +155,12 @@ def convert_time(sec):
     print("Time Elapsed = {0}:{1}:{2}".format(int(hours), int(mins), sec))
 
 
+s = stopwatch
 input("Push Enter button to start the stopwatch.")
-start_t = start()
+start_t = s.start()
 
 input("Press Enter button stop the stopwatch.")
-end_t = stop()
+end_t = s.stop()
 print("Start ", start_t)
 print("Stop ", end_t)
 print(convert_time(end_t - start_t))
@@ -116,3 +234,4 @@ class circle:
 circle
 # print(help(circle))
 print('#', 75 * "-")
+"""
