@@ -229,8 +229,14 @@ keys = ["un", "deux", "trois", "quatre", "cinq"]
 values = ["one", "two", "three", "four", "five"]
 
 # uses zip method to combine the two lists into a dictionary called new_dict
-new_dict=dict(zip(keys,values))
-print(new_dict)
+new_dict = {}
+num1 = len(keys)
+
+for i in range(0,num1):
+    new_dict[keys[i]] = values[i]
+print("list 1", keys)
+print("list 2", values)
+print("New dictionary", new_dict)
 print('#',75*"-")
 # =================================================================
 # E.8: Answer all the class exercise questions and submit it (Check the instructions).
