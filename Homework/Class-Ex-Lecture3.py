@@ -11,7 +11,8 @@
 # Write a script to find duplicates from an array (define an array with some duplicates on it). If
 # you use built in function in python explain the methods and how this methods are working.
 # =================================================================
-"""
+print("HW_E.1: Write a script to find duplicates from an array.")
+print()
 def find_dups (l1, l2):
     l3 = []
     for item in l1:
@@ -42,12 +43,13 @@ def main():
     print("l4", l4)
 
 main()
-"""
+print('#', 75 * "-")
 # =================================================================
 # E.2: Write a script that finds all such numbers which are divisible by 2 and 5, less than 1000. If you
 # use built in function in python explain the methods and how this methods are working.
 # =================================================================
-"""
+print("HW_E.2: Write a script that finds all such numbers which are divisible by 2 and 5, less than 1000.")
+print()
 def div_2(n):
     if n%2 == 0:
         return True
@@ -64,12 +66,15 @@ for i in range (0,1000):
     if div_2(i) and div_5(i):
         l += [i]
 print(l)
-"""
+print('#', 75 * "-")
 # =================================================================
 # E.3:
 # Write a Python class to convert a roman numeral to an integer. Hint: (Use the following symbols
 # and numerals Wiki )
 # =================================================================
+
+print("HW_E.3: Write a Python class to convert a roman numeral to an integer.")
+print()
 class romans_num_int():
     def int_converter(self, roman):
         roman_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
@@ -103,12 +108,7 @@ print(romans_num_int().int_converter("MDCCLXXVI"))
 print(romans_num_int().int_converter("MCMXVIII"))
 print(romans_num_int().int_converter("CMXCIX"))
 print(romans_num_int().int_converter("MMMCMXCIX"))
-
-
-
-
-
-
+print('#', 75 * "-")
 
 # =================================================================
 # E.4:
@@ -116,6 +116,41 @@ print(romans_num_int().int_converter("MMMCMXCIX"))
 # Given: [-20, -10, -6, -4, 3, 4, 7, 10]
 # Output : [[-10, 3, 7], [-6, -4, 10]]
 # =================================================================
+# A simple Python 3 program
+# to find three elements whose
+# sum is equal to zero
+
+print("HW_E.4: Write a Python class to find sum the three elements of the given array to zero.")
+print()
+
+class zero_sum_three():
+    def __init__(self, l1):
+        self.__list__ = l1
+        self.__len__ = len(l1)
+
+    def sum_three(self):
+        result = []
+        l = self.__list__
+        n = self.__len__
+
+        for i in range(0, n - 2):
+
+            for j in range(i + 1, n - 1):
+
+                for k in range(j + 1, n):
+
+                    if (l[i] + l[j] + l[k] == 0):
+                        result.append([l[i], l[j], l[k]])
+
+        return result
+
+
+
+list1 = [-20, -10, -6, -4, 3, 4, 7, 10]
+my_list = zero_sum_three(list1)
+print("Input list", list1)
+print("Output", my_list.sum_three())
+print('#', 75 * "-")
 
 
 # =================================================================
@@ -129,61 +164,91 @@ print(romans_num_int().int_converter("MMMCMXCIX"))
 # to stop the clock (call the stop method), and then read the elapsed time
 # (use the result of the elapsed method).
 # ----------------------------------------------------------------
-import math
-from math import pi
-"""
+print("HW_E.5: Answer all the class exercise questions (Lecture 3)")
 print("Class_Ex1: Write a python script (use lass) to simulate a Stopwatch.")
+print()
 import time
 
 class stopwatch:
     def __init__(self):
-        time.clock()
+        self.reset()
 
-def start():
-    start = time.time()
-    return start
+    def start(self):
+        self.start_time = time.perf_counter()
+        # print(self.start_time)
 
-def stop():
-    end = time.time()
-    return end
+    def stop(self):
+        self.end_time = time.perf_counter()
+        # print(self.end_time)
+        self.elapsed_time += self.end_time - self.start_time
+        # print("Time Elapsed = {0}:{1}:{2}".format(int(hours), int(mins), sec))
 
-def convert_time(sec):
-    mins = sec // 60
-    sec = sec % 60
-    hours = mins // 60
-    mins = mins % 60
-    print("Time Elapsed = {0}:{1}:{2}".format(int(hours), int(mins), sec))
+    def reset(self):
+        self.start_time = 0.0
+        self.end_time = 0.0
+        self.elapsed_time = 0.0
 
+class stopwatch_counter(stopwatch):
 
-s = stopwatch
-input("Push Enter button to start the stopwatch.")
-start_t = s.start()
+    def start(self):
+        super(stopwatch_counter, self).start()
 
-input("Press Enter button stop the stopwatch.")
-end_t = s.stop()
-print("Start ", start_t)
-print("Stop ", end_t)
-print(convert_time(end_t - start_t))
+    def stop(self):
+        super(stopwatch_counter, self).stop()
 
+from time import sleep
+timer = stopwatch_counter()
+count = 0
+timer.start()
+count +=1
+sleep(10)
+timer.stop()
+print("Time: ", timer.elapsed_time, "Count: ", count)
+timer.start()
+count +=1
+sleep(5)
+timer.stop()
+print("Time: ", timer.elapsed_time, "Count: ", count)
+timer.start()
+count +=1
+sleep(10)
+timer.stop()
+print("Time: ", timer.elapsed_time, "Count: ", count)
 print('#', 75 * "-")
 
 # =================================================================
 # Class_Ex2:
 # Write a python script (use class)to implement pow(x, n).
 # ----------------------------------------------------------------
+
 print("Class_Ex2: Write a python script (use class)to implement pow(x, n).")
 
+from math import pi
 
-def main():
-    # ask user to enter radius
-    r = float(input("Enter radius of a sphere: "))
-    volume = 4.0 / 3.0 * pi * pow(r, 3)
-    area = 4 * pi * pow(r, 2)
-    print("Sphere volume is ", volume, "in cubic units.")
-    print("Sphere area", area, "in square units.")
+class round_3D_object():
+    def __init__(self,r):
+        self.__radius__ = r
+
+    def __volume__(self):
+        return 4.0 / 3.0 * pi * pow(self.__radius__, 3)
+
+    def __area__(self):
+        return 4 * pi * pow(self.__radius__, 2)
 
 
-main()
+class sphere(round_3D_object):
+    def __init__(self, radius):
+        super().__init__(radius)
+
+
+r = int(input("Please enter the radius of the sphere: "))
+s = sphere(r)
+volume = s.__volume__()
+area = s.__area__()
+
+print("Sphere volume is ", volume, "in cubic units.")
+print("Sphere area", area, "in square units.")
+
 
 print('#', 75 * "-")
 
@@ -192,20 +257,23 @@ print('#', 75 * "-")
 # Write a python class to calculate the area of rectangle by length
 # and width and a method which will compute the area of a rectangle.
 # ----------------------------------------------------------------
+
+
 print("Class_Ex3: Write a python class to calculate the area of rectangle by length "
       "and width and a method which will compute the area of a rectangle.")
 
+class rectangle():
 
-def main():
-    # ask user to enter length and
-    l = float(input("Enter rectangle's length: "))
-    w = float(input("Enter rectangle's width: "))
-    area = l * w
-    print("Sphere area", area, "in square units.")
+    def __init__(self, l, w):
+        self.__length__ = l
+        self.__width__ = w
 
+    def area(self):
+        return self.__length__ * self.__width__
 
-main()
-
+my_rectangle = rectangle(15, 4)
+print("Rectangle dimension: length = {l} x width = {w}".format(l=my_rectangle.__length__, w = my_rectangle.__width__))
+print("Its area is", my_rectangle.area(), "in square units.")
 print('#', 75 * "-")
 
 # =================================================================
@@ -214,24 +282,27 @@ print('#', 75 * "-")
 # by a radius and two methods which will compute the area and the perimeter
 # of a circle.
 # ----------------------------------------------------------------
+
 print("Class_Ex4: Write a python class and name it Circle to calculate the area of circle"
       "by a radius and two methods which will compute the area and the perimeter"
       "of a circle.")
 
+from math import pi
 
 class circle:
-    '''
-    Circle class calculates area and perimeter of a circle by asking user to input radius.
-    '''
-    import math
-    # ask user to enter radius
-    r = float(input("Enter radius of a circle: "))
-    area = 4 * math.pi * pow(r, 2)
-    perimeter = 2 * math.pi * r
-    print("Circle's area", area, "in square units.")
-    print("Circle's perimeter", perimeter, "in unit.")
+    def __init__(self, radius):
+        self.__radius__ = radius
 
-circle
-# print(help(circle))
+    def __area__(self):
+        return 4 * pi * pow(self.__radius__, 2)
+
+    def __perimeter__(self):
+        return 2 * pi * self.__radius__
+
+r = float(input("Enter radius of a circle: "))
+my_circle = circle(r)
+print("Circle's area", my_circle.__area__(), "in square units.")
+print("Circle's perimeter", my_circle.__perimeter__(), "in unit.")
+
+
 print('#', 75 * "-")
-"""
