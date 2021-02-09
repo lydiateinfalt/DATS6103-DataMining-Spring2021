@@ -11,36 +11,43 @@
 # Write a script to find duplicates from an array (define an array with some duplicates on it). If
 # you use built in function in python explain the methods and how this methods are working.
 # =================================================================
+print('#', 75 * "-")
 print("HW_E.1: Write a script to find duplicates from an array.")
 print()
 def find_dups (l1, l2):
-    l3 = []
+    l = []
     for item in l1:
         if item in l2:
-            l3 += [item]
-    return l2
+            l += [item]
+    return l
 
 
 def find_unique (l1, l2):
-    l3 = []
+    l = []
     for item in l1:
         if item not in l2:
-            l3 += [item]
-    return l3
+            l += [item]
+    return l
 
 def main():
     l1 = [1, 2, 'Amir', 19, -3, 'end']
     l2 = [-1, 3.8, "Twilight", 'Would it were so simple', 19]
+    # using for loops
     dups = find_dups(l1, l2)
     no_dups = find_unique(l1, l2)
-    print('list 1', l1)
-    print('list 2', l2)
+    print('list 1:', l1)
+    print('list 2:', l2)
+    print()
+    print("Using for loops to traverse loops")
     print("list of duplicates ", dups)
     print('list of unique values', no_dups)
+    print()
+    # using list comprehensions
     l3 = [item for item in l1 if item in l2]
     l4 = [item for item in l1 if not item in l2]
-    print("l3", l3)
-    print("l4", l4)
+    print("Using list comprehension to compare results with above")
+    print("l3 (duplicates): ", l3)
+    print("l4 (non-duplicates) list: ", l4)
 
 main()
 print('#', 75 * "-")
@@ -62,8 +69,9 @@ def div_5(n):
     else:
         return False
 l = []
-for i in range (0,1000):
-    if div_2(i) and div_5(i):
+
+for i in range(0, 1000):
+    if (i % 2 == 0) and (i % 5 == 0):
         l += [i]
 print(l)
 print('#', 75 * "-")
@@ -75,6 +83,8 @@ print('#', 75 * "-")
 
 print("HW_E.3: Write a Python class to convert a roman numeral to an integer.")
 print()
+
+
 class romans_num_int():
     def int_converter(self, roman):
         roman_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
@@ -82,32 +92,31 @@ class romans_num_int():
         sum = 0
         l = []
         last = len(roman)
-        print(roman)
+        # print(roman)
         index = last
         pos = 0
-        while index > 0 :
+        while index > 0:
             key = roman[index - 2] + roman[index - 1]
+            # pos represent the tens, hundreds and thousands place
             if pos < 3 and key in nines:
                 l += [nines[key]]
                 index = index - 2
                 pos += 1
-            elif roman[index-1] in roman_dict:
-                l += [roman_dict[roman[index-1]]]
+            elif roman[index - 1] in roman_dict:
+                l += [roman_dict[roman[index - 1]]]
                 index = index - 1
-        print(l)
+        # print(l)
 
         for item in l:
             sum = sum + item
         return sum
 
-print(romans_num_int().int_converter("MMCDXXI"))
-print(romans_num_int().int_converter("XXXIX"))
-print(romans_num_int().int_converter("DCCLXXXIX"))
-print(romans_num_int().int_converter("MIX"))
-print(romans_num_int().int_converter("MDCCLXXVI"))
-print(romans_num_int().int_converter("MCMXVIII"))
-print(romans_num_int().int_converter("CMXCIX"))
-print(romans_num_int().int_converter("MMMCMXCIX"))
+
+roman_numeral_list = ["MMCDXXI", "XXXIX", "DCCLXXXIX", "MIX", "MDCCLXXVI", "MCMXVIII", "CMXCIX", "MMMCMXCIX"]
+my_roman = romans_num_int()
+for roman_n in roman_numeral_list:
+    print("Roman numeral: ", roman_n + " Integer:", my_roman.int_converter(roman_n))
+
 print('#', 75 * "-")
 
 # =================================================================
@@ -123,31 +132,28 @@ print('#', 75 * "-")
 print("HW_E.4: Write a Python class to find sum the three elements of the given array to zero.")
 print()
 
-class zero_sum_three():
+from math import floor
+
+class zero_sum_num:
     def __init__(self, l1):
-        self.__list__ = l1
-        self.__len__ = len(l1)
+        self.list = l1
+        self.len = len(l1)
 
     def sum_three(self):
         result = []
-        l = self.__list__
-        n = self.__len__
+        l = sorted(self.list)
+        max = self.len
 
-        for i in range(0, n - 2):
-
-            for j in range(i + 1, n - 1):
-
-                for k in range(j + 1, n):
-
+        for i in range(0, max - 2):
+            for j in range(i + 1, max - 1):
+                for k in range(j + 1, max):
                     if (l[i] + l[j] + l[k] == 0):
                         result.append([l[i], l[j], l[k]])
 
         return result
 
-
-
 list1 = [-20, -10, -6, -4, 3, 4, 7, 10]
-my_list = zero_sum_three(list1)
+my_list = zero_sum_num(list1)
 print("Input list", list1)
 print("Output", my_list.sum_three())
 print('#', 75 * "-")
@@ -227,13 +233,15 @@ from math import pi
 
 class round_3D_object():
     def __init__(self,r):
-        self.__radius__ = r
+        self.radius = r
 
-    def __volume__(self):
-        return 4.0 / 3.0 * pi * pow(self.__radius__, 3)
+    def volume(self):
+        # Sphere volume formula = 4/3 * pi * r^3
+        return 4.0 / 3.0 * pi * pow(self.radius, 3)
 
-    def __area__(self):
-        return 4 * pi * pow(self.__radius__, 2)
+    def area(self):
+        # surface area formula = 4*pi*r^2
+        return 4 * pi * pow(self.radius, 2)
 
 
 class sphere(round_3D_object):
@@ -241,13 +249,13 @@ class sphere(round_3D_object):
         super().__init__(radius)
 
 
-r = int(input("Please enter the radius of the sphere: "))
+r = float(input("Please enter the radius of the sphere: "))
 s = sphere(r)
-volume = s.__volume__()
-area = s.__area__()
+volume = s.volume()
+area = s.area()
 
 print("Sphere volume is ", volume, "in cubic units.")
-print("Sphere area", area, "in square units.")
+print("Sphere surface area", area, "in square units.")
 
 
 print('#', 75 * "-")
@@ -265,15 +273,15 @@ print("Class_Ex3: Write a python class to calculate the area of rectangle by len
 class rectangle():
 
     def __init__(self, l, w):
-        self.__length__ = l
-        self.__width__ = w
+        self.length = l
+        self.width = w
 
     def area(self):
-        return self.__length__ * self.__width__
+        return self.length * self.width
 
 my_rectangle = rectangle(15, 4)
-print("Rectangle dimension: length = {l} x width = {w}".format(l=my_rectangle.__length__, w = my_rectangle.__width__))
-print("Its area is", my_rectangle.area(), "in square units.")
+print("Rectangle dimensions: ", my_rectangle.length, "x", my_rectangle.width)
+print("Area is", my_rectangle.area(), "in square units.")
 print('#', 75 * "-")
 
 # =================================================================
@@ -291,18 +299,18 @@ from math import pi
 
 class circle:
     def __init__(self, radius):
-        self.__radius__ = radius
+        self.radius = radius
 
-    def __area__(self):
-        return 4 * pi * pow(self.__radius__, 2)
+    def area(self):
+        return 4 * pi * pow(self.radius, 2)
 
-    def __perimeter__(self):
-        return 2 * pi * self.__radius__
+    def perimeter(self):
+        return 2 * pi * self.radius
 
 r = float(input("Enter radius of a circle: "))
 my_circle = circle(r)
-print("Circle's area", my_circle.__area__(), "in square units.")
-print("Circle's perimeter", my_circle.__perimeter__(), "in unit.")
+print("Circle's area", my_circle.area(), "in square units.")
+print("Circle's perimeter", my_circle.perimeter(), "in unit.")
 
 
 print('#', 75 * "-")
