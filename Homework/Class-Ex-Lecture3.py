@@ -86,6 +86,7 @@ print()
 
 
 class romans_num_int():
+    # highest roman numeral this class will convert is 3999
     def int_converter(self, roman):
         roman_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
         nines = {'IX': 9, 'XC': 90, 'CM': 900}
@@ -112,7 +113,7 @@ class romans_num_int():
         return sum
 
 
-roman_numeral_list = ["MMCDXXI", "XXXIX", "DCCLXXXIX", "MIX", "MDCCLXXVI", "MCMXVIII", "CMXCIX", "MMMCMXCIX"]
+roman_numeral_list = ["MMCDXXI", "XXXIX", "DCCLXXXIX", "MIX", "MDCCLXXVI", "MCMXVIII", "CMXCIX", "MMMCMXCIX", "MCMXCIX"]
 my_roman = romans_num_int()
 for roman_n in roman_numeral_list:
     print("Roman numeral: ", roman_n + " Integer:", my_roman.int_converter(roman_n))
@@ -152,7 +153,7 @@ class zero_sum_num:
 
         return result
 
-list1 = [-20, -10, -6, -4, 3, 4, 7, 10]
+list1 = [-20, -10, -6, -4, 3, 4, 7, 10, 8, 12, 4]
 my_list = zero_sum_num(list1)
 print("Input list", list1)
 print("Output", my_list.sum_three())
