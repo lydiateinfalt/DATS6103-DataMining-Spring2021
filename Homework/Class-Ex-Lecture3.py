@@ -232,31 +232,18 @@ print("Class_Ex2: Write a python script (use class)to implement pow(x, n).")
 
 from math import pi
 
-class round_3D_object():
-    def __init__(self,r):
-        self.radius = r
+class power():
+    def __init__(self,base, exp):
+        self.base = base
+        self.exponent = exp
+        self.answer = self.base ** self.exponent
 
-    def volume(self):
-        # Sphere volume formula = 4/3 * pi * r^3
-        return 4.0 / 3.0 * pi * pow(self.radius, 3)
+    def display(self):
+        return self.answer
 
-    def area(self):
-        # surface area formula = 4*pi*r^2
-        return 4 * pi * pow(self.radius, 2)
-
-
-class sphere(round_3D_object):
-    def __init__(self, radius):
-        super().__init__(radius)
+print(power(2,1).display())
 
 
-r = float(input("Please enter the radius of the sphere: "))
-s = sphere(r)
-volume = s.volume()
-area = s.area()
-
-print("Sphere volume is ", volume, "in cubic units.")
-print("Sphere surface area", area, "in square units.")
 
 
 print('#', 75 * "-")
