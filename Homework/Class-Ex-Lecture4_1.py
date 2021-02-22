@@ -123,7 +123,7 @@ print('#',50*"-")
 # Usage (Perecent): 22.2, 17.6, 8.8, 8, 7.7, 6.7
 # =================================================================
 # E.7:
-# Write a Python code to create bar plots with errorbars on the same plot. Put labels above each
+# Write a Python code to create bar plots with error bars on the same plot. Put labels above each
 # bar displaying men average (integer value).
 # Sample Date
 # Average: 0.14, 0.32, 0.47, 0.38
@@ -281,46 +281,42 @@ print("Unique values in array 1 that are not in array2\n", array3)
 
 
 print('#',50*"-")
-# =================================================================
-# Class_Ex11:
-# Write a NumPy code to construct an array by repeating.
-# Sample array: [1, 2, 3, 4, 5]
-# ----------------------------------------------------------------
+# Solution Class_Ex11: Write a NumPy code to construct an array by repeating. Sample array: [1, 2, 3, 4, 5]
 
-
-
+n = np.array([1, 2, 3, 4, 5])
+new_array = np.tile(n,5)
+print(new_array)
 
 
 print('#',50*"-")
-# =================================================================
-# Class_Ex12:
-# Write a NumPy code to get the values and indices of the elements
+# Solution Class_Ex12: Write a NumPy code to get the values and indices of the elements
 # that are bigger than 6 in a given array.
-# ----------------------------------------------------------------
+import numpy as np
 
-
-
-
-
-# =================================================================
-# Class_Ex13:
-# Write a NumPy program to find the 4th element of a 2 dimensional
-# specified array.
-# ----------------------------------------------------------------
-
-
-
-
-
+x = np.array([1,99, 0, 17, -8, 11, 66])
+print("Values bigger than 6 =", x[x>6])
+print("Their indices are ", np.where(x > 6))
 print('#',50*"-")
-# =================================================================
-# Class_Ex14:
-# Write a NumPy code to get the floor, ceiling and truncated
-# values of the elements of an numpy array.
-# ----------------------------------------------------------------
 
 
+# Solution Class_Ex13: Write Numpy code to get the 4th element of a 2 dimensional array
 
+x = np.array([[2,5,7],[8,9,10]])
+print("Original array \n")
+print(x)
+print("4th element of the array:",x.flat[3])
+print('#',50*"-")
+
+
+# Solution Class_Ex14: Write a NumPy code to get the floor, ceiling and truncated values of the elements of an numpy array.
+
+x = [1.52421, 3.1123, - 1.053, 0.04354507, 2.19]
+print(x)
+
+
+print("Floor values:",np.floor(x))
+print("Ceiling values:",np.ceil(x))
+print("Truncated values:", np.trunc(x))
 print('#',50*"-")
 # =================================================================
 # Class_Ex15:
