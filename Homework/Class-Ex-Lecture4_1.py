@@ -2,26 +2,19 @@
 # Lydia Teinfalt
 # DATS 6103: Data Mining
 # Spring 2021
-# 02/12/2021
+# 02/24/2021
 # Homework 4 and Lecture 4 Exercises
 # Reference: https://www.w3resource.com/python-exercises/numpy/basic/index.php
 # =========================
+import numpy as np
+import matplotlib.pyplot as plt
 
-# =================================================================
-# E.1:
-# Write a script to
-# i. Sum all the items in a array (use random number generator and multiply it by 100, create a
-# vector with the size 200).
-# ii. Get the largest number and smallest number with the indexing of it.
-# iii. plot the following vector and check your min and max value that you find in section i.
-# =================================================================
+# Solution E.1
 print('#', 75 * "-")
 print("HW_E.1:  Write a script to "
       "i. sum all the items in a array (use random generator and multiply it by 100,"
       "create a vector with the size 200")
 print()
-import numpy as np
-import matplotlib.pyplot as plt
 
 e100 = np.random.randint(1, 10, size=200) * 100
 print("Array:", e100)
@@ -41,14 +34,9 @@ plt.plot(np.arange(0, 200), e100, color = "blue")
 plt.show()
 
 
-
+print('#',50*"-")
 # =================================================================
-# E.2:
-# Plot the following functions x, sin(x), ex and log(x) over the interval 1 < x < 6 with the step
-# size of 0.1. (Put the title x axis label and y axis label for each plot)
-
-# =================================================================
-
+# Solution E.2: Plot functions x, sin(x), ex, and log(x) over the interval 1 < x < 6 with step size of 0.1
 
 x=np.arange(1, 6, 0.1)
 ya = np.sin(x)
@@ -70,72 +58,138 @@ plt.xlabel("x axis")
 plt.plot(x, yc, color= 'black', label = "log(x)")
 plt.show()
 
-
 print('#',50*"-")
-# E.3:
-# Generate the random gaussian numbers with zero mean and variance of 1 called it vector x,
-# generate the random uniform numbers with zero mean and variance of 1 called it vector y .
-# i. Compute the mean and standard deviation of x and y.
-# ii. Plot the histogram of x and y, increase the number of bins to get more resulting. Explain what
-# information you get from the histogram(Put the title x axis label and y axis label for each plot)
-# 1
 # =================================================================
-# E.4:
-# Lets
-# A =
-# 0
-# @
-# 1 2 3
-# 4 5 6
-# 7 8 9
-# 1
-# A
-# Answer the following questions (Do not put the digits manually ):
-# i. Assign vector x to the first row of A.
-# ii. Assign matrix y to the last 2 rows of A
-# iii. Sum the first row and add it to the first column.
-# iv. Compute the norm of x (Euclidian Norm).
-# v. Swap the first column with the second column and delate the second row.
+# Solution E.3: Generate random gaussian numbers vector x
+mu, sigma = 0, 1 # mean and standard deviation
+x = np.random.normal(mu, sigma, 100)
+# Vector x
+print("Vector x\n")
+# print(x)
+print("Mean of vector x: ", x.mean())
+# hx = plt.hist(x, bins=100)
+hx = plt.hist(x, bins=20)
+plt.xlabel("Vector X Values")
+plt.ylabel("Count")
+plt.show()
+
+# Vector y
+y = np.random.uniform(mu, sigma, 100)
+
+print("Vector y\n")
+# print(y)
+print("Mean of vector y: ", y.mean())
+hy = plt.hist(y, bins=20)
+plt.xlabel("Vector y values")
+plt.ylabel("Count")
+plt.show()
+
+print("The histograms show the counts of numbers falling within the bin size values in the vector x and y. \n")
+print("The greater number of bins represent a smaller range of values.")
+print('#',50*"-")
 # =================================================================
-# E.5:
+# Solution E.4:
+A = np.arange(1,10).reshape(3,3)
+print("Matrix A:\n", A)
+x = A[0]
+print("i. Vector x:\n", x)
+y = A[1:]
+print("ii. Vector y: \n", y)
+A[:,0] = A[:,0] + A[0].sum()
+print("iii. Sum the first row and add it to the first column, column values:\n ", A)
+print("iv. Compute the norm of x (Euclidian Norm): ", np.linalg.norm(x))
+print("Before wap \n")
+print(A)
+A[:,[1,0]] = A[:,[0,1]]
+print("After swap\n", A)
+A=np.delete(A,1,0)
+print("v. Matrix after delete\n", A)
+# =================================================================
+
+# Solution E.5
+
 # i. Create a vector between 20 and 35, square each elements and sum all the elements of this
 # vector.
-# Let
-# x =
-# 0
-# @
-# 2 􀀀4 9 􀀀8
-# 􀀀3 2 􀀀1 0
-# 5 4 􀀀3 3
-# 1
-# A
+v = np.arange(20,36)
+v_square = np.square(v)
+print("i.Vector between 20 and 35:\n", v)
+print("Square each element:\n", v_square)
+print("Sum all elements:", np.sum(v_square))
+x = np.array([[2, -4, 9, -8],[-3, 2, -1, 0],[5, 4, -3, 3]])
+print(x)
+print()
 # ii. Compute the absolute value of x for all the rows and columns separately.
+print("ii. Compute the absolute value of x for all the rows and columns separately.\n")
+x = np.absolute(x)
+print(x)
+print()
 # iii. Compute the square of each elements of x.
+print("iii. Compute the square of each element.\n")
+print(np.sqrt(x))
+print()
 # iv. Swap the first row by the second row.
+x[[1,0],:] = x[[0,1],:]
+print("iv. Swap the first row by the second row. \n",x)
 # v. Replace the first row by zeros and the third row by ones.
+print("v. Replace the first row by zeros and the third row by ones.\n")
+x[0] = np.zeros(4)
+x[2] = np.ones(4)
+print(x)
+print()
 # vi. Compute the mean and standard deviation of first and third row.
+print("vi. Compute the meand and standard deviation of first and third row.\n")
+print(np.mean(x[0]))
+print(np.mean(x[2]))
 # vii. Sum all the columns and then sum the results.
-# 2
+print("vii. Sum all the columns: \n", np.sum(x, axis=0))
+print("Sum:", np.sum(x))
+print('#',50*"-")
 # =================================================================
-# E.6:
-# Write a Python code to show a bar chart using famous languages.
-# Languages: Java, Python, PHP, JavaScript, C#, C++
-# Usage (Perecent): 22.2, 17.6, 8.8, 8, 7.7, 6.7
+# Solution E.6
+# Reference: https://www.geeksforgeeks.org/bar-plot-in-matplotlib/
+data = {'Java': 22.2, 'Python': 17.6, 'PHP': 8.8, 'JavaScript': 8, 'C#': 7.7, 'C++': 6.7}
+languages = list(data.keys())
+percentages = list(data.values())
+plt.bar(languages, percentages)
+#plt.xlabel("Popular programming languages")
+#plt.ylabel("Percentages")
+plt.show()
+print('#',50*"-")
+
 # =================================================================
-# E.7:
-# Write a Python code to create bar plots with error bars on the same plot. Put labels above each
-# bar displaying men average (integer value).
-# Sample Date
-# Average: 0.14, 0.32, 0.47, 0.38
-# STD: 0.23, 0.32, 0.18, 0.46
+# Solution E.7
+# https://www.w3resource.com/graphics/matplotlib/barchart/matplotlib-barchart-exercise-12.php
+
+N = 4
+Avg = (0.14, 0.32, 0.47, 0.38)
+STD = (0.23, 0.32, 0.18, 0.46)
+# the x locations for the groups
+ind = np.arange(N)
+# the width of the bars
+width = 0.35
+plt.bar(ind, Avg, width, yerr=STD)
+plt.ylabel('Scores')
+plt.xlabel('Velocity')
+plt.title('Scores by Velocity')
+# Turn on the grid
+plt.minorticks_on()
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+plt.show()
+print('#',50*"-")
 # =================================================================
-# E.8:
-# Write a script to find the second largest number in an array (use random number generator) and
+# Solution E.8: Write a script to find the second largest number in an array (use random number generator) nd
 # multiply it by 50.
+x = np.random.randint(10, size=(4,4))
+print(x)
+# create an array with numbers smaller than the max value
+x = x[x<np.max(x)]
+#Print the second highest number from above step
+print("Find second highest value in an array and multiply it by 50:", np.max(x) * 50)
+print('#',50*"-")
 # =================================================================
 # E.9:
 # Answer all the class exercise questions (Lecture 4 - All) and submit it (Check the instructions).
-
 
 # Solution Class_Ex1: Write Numpy code to test if none of the elements of an array is zero
 # Reference: https://www.w3resource.com/python-exercises/numpy/basic/index.php
@@ -170,11 +224,6 @@ print(not np.any(y))
 print('#',50*"-")
 
 
-# =================================================================
-# Class_Ex3:
-# Write a NumPy code to test if two arrays are element-wise equal
-# within a tolerance.
-# ----------------------------------------------------------------
 # Solution Class_Ex3: Write a NumPy code to test if two arrays are element-wise equal within a tolerance
 # Reference: https://www.w3resource.com/python-exercises/numpy/basic/index.php
 ar1 = [0.6, 0.1, -0.0001]
