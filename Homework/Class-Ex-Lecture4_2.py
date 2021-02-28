@@ -70,16 +70,13 @@ print('#',50*"-")
 # Use the following data.
 # ----------------------------------------------------------------
 # Solution Class_Ex3
-data = np.random.rand(5,3)
-color_list = ['b', 'g', 'r', 'k', 'y']
-
+data = np.array([[4,0,4],[1,2,2], [1,2,1], [1,1,0], [0,1,1]])
 x = np.arange(3)
-plt.bar(x + 0.00, data[0], color = color_list[0], width = 0.25)
-plt.bar(x + 0.25, data[1], color = color_list[1], width = 0.25)
-plt.bar(x + 0.50, data[2], color = color_list[2], width = 0.25)
-plt.bar(x + 0.75, data[0], color = color_list[3], width = 0.25)
-plt.bar(x + 1.00, data[1], color = color_list[4], width = 0.25)
-plt.title(" Class_Ex3, Figure 1")
+colors = ['b', 'g', 'r', 'k', 'y']
+bot = np.cumsum(data, axis = 0)
+plt.bar(x, data[0], color=colors[0])
+for j in range(1, data.shape[0]):
+    plt.bar(x, data[j], color=colors[j], bottom=bot[j-1])
 plt.show()
 print('#',50*"-")
 
