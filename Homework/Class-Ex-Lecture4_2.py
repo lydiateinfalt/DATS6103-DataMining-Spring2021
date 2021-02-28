@@ -2,7 +2,7 @@
 # Lydia Teinfalt
 # DATS 6103: Data Mining
 # Spring 2021
-# 02/26/2021
+# 02/27/2021
 # Class-Ex-Lecture4_2: Matplotlib
 # Find the slope of the following curve for each of its points
 #                  y = np.exp(-x ** 2)
@@ -94,10 +94,10 @@ y4_1 = 2*x4 + 1
 y4_2 = np.exp(-x4 ** 2)
 y4_3 = np.sin(x4)
 labels = ("y=2x+1", "exp(-x squared)", "sin(x)")
-plt.plot(x4,y4_1,color ="green", label = labels[0])
-plt.plot(x4,y4_2, color = "blue", label = labels[1])
-plt.plot(x4,y4_3, color= "Red", label= labels[2])
-plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+plt.plot(x4,y4_1,color ="green")
+plt.plot(x4,y4_2, color = "blue")
+plt.plot(x4,y4_3, color= "Red")
+plt.legend(labels)
 plt.title("Class Ex4, Figure 1: Line plots with legend")
 plt.xlabel("x")
 plt.ylabel("y")
@@ -113,7 +113,6 @@ print('#',50*"-")
 # Write a Python code to plot two or more lines with legends,
 # different widths and colors.
 # ----------------------------------------------------------------
-
 # Solution Class_Ex5
 x5= np.linspace(-3,3, 100)
 y5_1 = 2*x5 + 1
@@ -122,9 +121,9 @@ y5_3 = np.sin(x5)
 labels = ("y=2x+1", "exp(-x squared)", "sin(x)")
 colors = ("cyan", "orange", "yellow")
 plt.plot(x5,y5_1,color =colors[0], label = labels[0], linewidth = 1.5, linestyle = 'dashed')
-plt.plot(x5,y5_2, color = colors[1], label = labels[1], linewidth = 0.3)
+plt.plot(x5,y5_2, color = colors[1], label = labels[1], linewidth = 3)
 plt.plot(x5,y5_3, color= colors[2], label= labels[2], linewidth = 8.7)
-plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+plt.legend(labels)
 plt.title("Class_Ex5, Figure 1: Line plots with legend, Diff Widths, Diff Colors")
 plt.xlabel("x")
 plt.ylabel("y")
@@ -144,8 +143,6 @@ x6 = [1,4,5,6,7]
 # y axis values
 y6_1 = [2,6,3,6,3]
 y6_2 = [4,2,1,5,1]
-
-
 
 # plotting the points
 plt.plot(x6, y6_1, color='red', linestyle='dashdot', linewidth = 3,
@@ -182,7 +179,6 @@ print('#',50*"-")
 
 # Solution Class_Ex7
 # Reference: https://www.w3resource.com/graphics/matplotlib/basic/matplotlib-basic-exercise-14.php
-#Date,Revenue
 # Reference: https://medium.com/@sambit9238/intro-to-data-visualization-using-matplotlib-in-python-8a4068ba48f6
 
 months = ['nov-17','dec-17','jan-18','feb-18','mar-18','apr-18','may-18','jun-18','jul-18','aug-18','sep-18','oct-18', 'nov-18']
@@ -191,7 +187,7 @@ revenue_b = np.array([4000, 6000, 8000, 9000, 10000, 11000, 12000, 13000, 14000,
 plt.plot(revenue_a, color="black", ls="--", marker="o", ms=6, label="revenue_companyA")
 plt.plot(revenue_b, color="red", ls="--", marker="o", ms=6, label="revenue_companyB")
 plt.grid(linestyle='-', linewidth='0.6', color='blue')
-plt.xticks(list(range(12)), months, rotation="vertical")
+plt.xticks(list(range(13)), months, rotation="vertical")
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
 plt.title("Revenue of Company A & B from Nov-2017 through Nov-2018")
 plt.show()

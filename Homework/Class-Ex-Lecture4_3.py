@@ -2,7 +2,7 @@
 # # Lydia Teinfalt
 # # DATS 6103: Data Mining
 # # Spring 2021
-# # 02/26/2021
+# # 02/27/2021
 # # Class-Ex-Lecture4_3: Seaborn
 # We will be working with a famous titanic data set for these exercises.
 # Later on in the Data mining section of the course, we will work  this data,
@@ -94,13 +94,15 @@ plt.show()
 # Explain each graph and describe the results in words
 # ----------------------------------------------------------------
 
-print("Joint plot shows both distribution of passenger ages and cost of fares.")
-print("Distribution plot of fare prices against normal distribution.")
-print("Box plots showed the age of passengers in first, second and third class.")
-print("Swarm plots")
-print("Count plots of passenger ages in first, second and third classes.")
-print("Heat map showing correlation between factors in the titantic data set.")
-print("Two histogram showing number of male and female passengers into one plot (using facet).")
+print("Joint plot shows relationship between passengers' ages and fare prices ")
+print("along with the histograms age and fares.")
+print("Distribution plot of fare prices to determine the distribution.")
+print("Box plots showed the age of passengers in first, second and third classes.")
+print("Box plot give visual on range, max, min and median values of the ages in each class.")
+print("Swarm plots used to determine relationship between age and categorical data of first, second and third classes. ")
+print("Count plots are similar to histograms broken down by passenger's gender.")
+print("Heat map showing how much or little features in the titanic correlate. ")
+print("Two histogram showing ages of titanic passengers broken down by gender. ")
 
 
 
