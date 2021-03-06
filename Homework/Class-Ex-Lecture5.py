@@ -7,7 +7,7 @@
 # instructions and write codes for each section.
 
 
-# Solution Exercise 1
+# Solution HW_Ex1
 # i. Import Pandas and libraries that you think it is needed.
 import pandas as pd
 import numpy as np
@@ -51,14 +51,39 @@ print(chipotle['item_price'].aggregate(np.sum))
 # chipotle.loc[(chipotle['item_name'] == 'Canned Soda') & (chipotle['quantity'] > 1)]
 dfxi = chipotle.loc[(chipotle['item_name'] == 'Canned Soda') & (chipotle['quantity'] > 1)]
 print("Number of orders where the number of 'Canned Soda' ordered greater than one:", dfxi.shape[0])
-# =================================================================
-# Class_Ex1:
-# From the data table above, create an index to return all rows for
-# which the phylum name ends in "bacteria" and the value is greater than 1000.
+print('#',50*"-")
 # ----------------------------------------------------------------
 
-import matplotlib.pyplot as plt
+# E.2:
+# Work with Pandas module and answer the following questions. Open a .py file and follow the
+# instructions and write codes for each section.
+# i. Import Pandas and libraries that you think it is needed.
+# ii.Import the dataset from BB. The name of the dataset is Food.txt.
+# iii. Print the size of the data frame and the6 observation of it.
+# iv. How many columns this dataset has and print the name of all the columns.
+# v. What is the name and data type of 105th column?
+# vi. What are the indices of this datset. How they are shaped and ordered.
+# vii. What is the name of product of 100th observation .
 
+# panda already imported above as pd
+food = pd.read_csv("food.tsv", sep="\t" )
+print("Solution HW_E.2")
+print("iii. Food dataframe size:", food.size)
+print("iii. Number of rows:", food.shape[0])
+print("iv. Number of columns:", food.shape[1])
+print("iv. Column names:", list(food.columns.values))
+print("v. Column 105 name:", food.columns.values[105])
+print("v. Column 105 data type:", food.iloc[:, 105].dtypes)
+print("vi. Indices:", food.index.values)
+print("vi. Index shape:", food.index.shape)
+print("vi. Index sorted increasing?:", food.index.is_monotonic_increasing)
+print("vi. Index sorted decreasing?:", food.index.is_monotonic_decreasing)
+print("v. Product name at 100th position:", food['product_name'].iloc[100])
+print('#',50*"-")
+# ----------------------------------------------------------------
+# Solution Class_Ex1: From the data table above, create an index to return all rows for
+# which the phylum name ends in "bacteria" and the value is greater than 1000.
+print("Solution Class_Ex1")
 data = pd.DataFrame({'value':[632, 1638, 569, 115, 433, 1130, 754, 555],
                      'patient':[1, 1, 1, 1, 2, 2, 2, 2],
                      'phylum':['Firmicutes', 'Proteobacteria', 'Actinobacteria',
@@ -71,6 +96,7 @@ print('#',50*"-")
 # ----------------------------------------------------------------
 # Solution Clas_Ex2: Create a treatment column and add it to DataFrame that has 6 entries
 # which the first 4 are zero and the 5 and 6 element are 1 the rest are NAN
+print("Solution Class_Ex2")
 ff_ex2 = pd.DataFrame(np.nan, index=[0, 1, 2, 3, 4, 5, 6], columns=['A', 'B'])
 df_ex2['treatment']=pd.Series([0, 0, 0, 0, 0, 1, 1])
 print(df_ex2)
@@ -79,6 +105,7 @@ print('#',50*"-")
 # ----------------------------------------------------------------
 # Solution Class_Ex3:Create a month column and add it to DataFrame. Just for month Jan.
 # Using data from Class_Ex2
+print("Solution Class_Ex3")
 data['month']=pd.Series("Jan")
 print(data)
 print('#',50*"-")
@@ -86,30 +113,31 @@ print('#',50*"-")
 # ----------------------------------------------------------------
 # Solution Class_Ex4: Drop the month column.
 # Using data from Class_Ex2
+print("Solution Class_Ex4")
 data = data.drop(['month'], axis=1)
 print(data)
 print('#',50*"-")
 
 # ----------------------------------------------------------------
 # Solution Class_Ex5: Create a numpy array that has all teh values of DataFrame.
+print("Solution Class_Ex5")
 data_numpy = data.to_numpy()
 print('#',50*"-")
 
 # ----------------------------------------------------------------
 # Solution Class_Ex6: Read baseball data into DataFrame and check the
 # first and last 10 rows
+print("Solution Class_Ex6")
 baseball = pd.read_csv("baseball.csv" )
 print(baseball.head(10))
 print(baseball.tail(10))
 
 print('#',50*"-")
-# =================================================================
-# Class_Ex7:
-# Create  a unique index by specifying the id column as the index
-# Check the new df and verify it is unique
+
 # ----------------------------------------------------------------
 # Solution Class_Ex7: Cretae a unique index by specifying the id column
 # as the index. Check the new df and verify it is unique
+print("Solution Class_Ex7")
 df = baseball.set_index('id')
 count = df.shape[0]
 df.drop_duplicates
@@ -124,6 +152,7 @@ print('#',50*"-")
 # ----------------------------------------------------------------
 # Solution Class_ex8: Populate id column to be a sequence of numbers where Pandas
 # fills in missing data with NaN values. Using df from previous step.
+print("Solution Class_Ex8")
 df.sort_index(inplace=True, ignore_index=True)
 id_0 = df.index[0]
 id_1 = df.index[-1]
@@ -135,17 +164,20 @@ print('#',50*"-")
 
 # ----------------------------------------------------------------
 # Solution Class_Ex9: Fill the missing values.  Filled with 0s.
+print("Solution Class_Ex9")
 df_ex8.fillna(0)
 print(df_ex8)
 print('#',50*"-")
 
 # ----------------------------------------------------------------
 # Solution Class_Ex10: Find the shape of the new df
+print("Solution Class_Ex10")
 print(df_ex8.shape)
 print('#',50*"-")
 
 # ----------------------------------------------------------------
 # Solution Class_Ex11: Drop row 89525 and 89526
+print("Solution Class_Ex11")
 df_ex8 = df_ex8.drop(index= 89525)
 df_ex8 = df_ex8.drop(index=89526)
 print(df_ex8.tail(15))
@@ -153,6 +185,7 @@ print('#',50*"-")
 
 # ----------------------------------------------------------------
 # Solution Class_Ex12: sort the df descending and not ascending
+print("Solution Class_Ex12")
 df_ex8.sort_index(ascending=False)
 print('#',50*"-")
 
