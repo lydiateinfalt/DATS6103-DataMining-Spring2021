@@ -1,0 +1,158 @@
+# =================================================================
+# Lydia Teinfalt
+# DATS 6103, Spring 2021
+# Homework 5, 03/03/21
+# ----------------------------------------------------------------
+# Work with Pandas module and answer the following questions. Open a .py file and follow the
+# instructions and write codes for each section.
+
+
+# Solution Exercise 1
+# i. Import Pandas and libraries that you think it is needed.
+import pandas as pd
+import numpy as np
+# ii. Import the dataset from BB. The name of the dataset is Data2.txt.
+chipotle = pd.read_csv("data2.txt", sep="\t" )
+
+# iii. Assign it to a variable called chipotle and print the 6 observation of it.
+print(chipotle['item_price'])
+print(chipotle.head(6))
+
+# iv. Clean the item price column and change it in a float data type then reassign the column with
+# the cleaned prices.
+chipotle['new_item_price'] = chipotle['item_price'].str.lstrip('$').astype(float)
+# print(chipotle['new_item_price'])
+chipotle['item_price'] = chipotle['new_item_price']
+
+# v. Remove the duplicates in item name and quantity.
+chipotle.drop_duplicates(subset=['item_name'])
+chipotle.drop_duplicates(subset=['quantity'])
+# print(chipotle)
+# vi. Find only the products with quantity equals to 1 and find item price that greater that 10.
+print(chipotle[chipotle.quantity == 1 & (chipotle.item_price > 10)])
+
+# vii. Find the price of each item.
+item_list = pd.DataFrame(chipotle[chipotle.quantity == 1], columns=['item_name', 'item_price'])
+chipotle_menu = item_list.drop_duplicates(keep=False).sort_values(by=['item_name'])
+print("Item name - price", chipotle_menu)
+
+# ix. find the most expensive item ordered.
+column = chipotle['item_price']
+max_value = column.max()
+print("Most expensive item ordered: $",max_value)
+
+# x. Find the frequency of times were a Veggie Salad Bowl ordered.
+dfx = chipotle[(chipotle['item_name'] == 'Veggie Salad Bowl')]
+print("Number of orders for Veggie Salad Bowl:", dfx.shape[0])
+
+
+print(chipotle['item_price'].aggregate(np.sum))
+# xi. How many times people ordered more than one Canned Soda?
+# chipotle.loc[(chipotle['item_name'] == 'Canned Soda') & (chipotle['quantity'] > 1)]
+dfxi = chipotle.loc[(chipotle['item_name'] == 'Canned Soda') & (chipotle['quantity'] > 1)]
+print("Number of orders where the number of 'Canned Soda' ordered greater than one:", dfxi.shape[0])
+# =================================================================
+# Class_Ex1:
+# From the data table above, create an index to return all rows for
+# which the phylum name ends in "bacteria" and the value is greater than 1000.
+# ----------------------------------------------------------------
+
+import matplotlib.pyplot as plt
+
+data = pd.DataFrame({'value':[632, 1638, 569, 115, 433, 1130, 754, 555],
+                     'patient':[1, 1, 1, 1, 2, 2, 2, 2],
+                     'phylum':['Firmicutes', 'Proteobacteria', 'Actinobacteria',
+    'Bacteroidetes', 'Firmicutes', 'Proteobacteria', 'Actinobacteria', 'Bacteroidetes']})
+
+
+print(data[data.phylum.str.endswith('bacteria') & (data.value > 1000)])
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Clas_Ex2: Create a treatment column and add it to DataFrame that has 6 entries
+# which the first 4 are zero and the 5 and 6 element are 1 the rest are NAN
+ff_ex2 = pd.DataFrame(np.nan, index=[0, 1, 2, 3, 4, 5, 6], columns=['A', 'B'])
+df_ex2['treatment']=pd.Series([0, 0, 0, 0, 0, 1, 1])
+print(df_ex2)
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex3:Create a month column and add it to DataFrame. Just for month Jan.
+# Using data from Class_Ex2
+data['month']=pd.Series("Jan")
+print(data)
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex4: Drop the month column.
+# Using data from Class_Ex2
+data = data.drop(['month'], axis=1)
+print(data)
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex5: Create a numpy array that has all teh values of DataFrame.
+data_numpy = data.to_numpy()
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex6: Read baseball data into DataFrame and check the
+# first and last 10 rows
+baseball = pd.read_csv("baseball.csv" )
+print(baseball.head(10))
+print(baseball.tail(10))
+
+print('#',50*"-")
+# =================================================================
+# Class_Ex7:
+# Create  a unique index by specifying the id column as the index
+# Check the new df and verify it is unique
+# ----------------------------------------------------------------
+# Solution Class_Ex7: Cretae a unique index by specifying the id column
+# as the index. Check the new df and verify it is unique
+df = baseball.set_index('id')
+count = df.shape[0]
+df.drop_duplicates
+count_no_dups = df.shape[0]
+if count == count_no_dups:
+  print("Confirmed no duplicates in new df with id as index, # rows:", df.shape[0])
+else:
+  print("Not unique")
+
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_ex8: Populate id column to be a sequence of numbers where Pandas
+# fills in missing data with NaN values. Using df from previous step.
+df.sort_index(inplace=True, ignore_index=True)
+id_0 = df.index[0]
+id_1 = df.index[-1]
+print("first index", id_0)
+print("last index", id_1)
+df_ex8 = pd.DataFrame(df,index=range(id_0, id_1 + 1, 1))
+
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex9: Fill the missing values.  Filled with 0s.
+df_ex8.fillna(0)
+print(df_ex8)
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex10: Find the shape of the new df
+print(df_ex8.shape)
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex11: Drop row 89525 and 89526
+df_ex8 = df_ex8.drop(index= 89525)
+df_ex8 = df_ex8.drop(index=89526)
+print(df_ex8.tail(15))
+print('#',50*"-")
+
+# ----------------------------------------------------------------
+# Solution Class_Ex12: sort the df descending and not ascending
+df_ex8.sort_index(ascending=False)
+print('#',50*"-")
+
