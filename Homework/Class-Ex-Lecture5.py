@@ -81,6 +81,46 @@ print("vi. Index sorted decreasing?:", food.index.is_monotonic_decreasing)
 print("v. Product name at 100th position:", food['product_name'].iloc[100])
 print('#',50*"-")
 # ----------------------------------------------------------------
+# Solution HWE.3:
+# Work with Pandas module and answer the following questions. Open a .py file and follow the
+# instructions and write codes for each section.
+
+print("Solution HW_E.3")
+# i. Import Pandas and libraries that you think it is needed.
+# import pandas as pd # pandas already imported above
+import numpy as np
+# ii. Import the dataset from BB. The name of the dataset is Data.txt.
+users = pd.read_csv("//content//Data.txt", sep="|")
+# iii. Assign it to a variable called users and print the 6 observation of it.
+print(users.head(6))
+# iv. Find what is the mean age for occupation.
+print(users.groupby(['occupation']).mean())
+# v. Find the male ratio for occupation and sort it from the most to the least.
+m = users[users.gender == 'M'].groupby('occupation').count()
+t = users.groupby('occupation').count()
+ratio = m/t
+# print(m.gender)
+# print(t.gender)
+print("v. Find the male ratio for occupation, display desc order",ratio.gender.sort_values(ascending=False))
+
+# vi. For each occupation, calculate the minimum and maximum ages.
+# vi. For each occupation, calculate the minimum and maximum ages.
+u6 = users.groupby(['occupation']).agg({ 'age' : ['min' , 'max' ]})
+print("vi. Min/max age by occupation:")
+print(u6)
+
+# vii.For each combination of occupation and gender, calculate the mean age.
+u7 = users.groupby(['occupation','gender']).agg(np.mean)
+print("vii. Mean age", u7['age'])
+# viii. Per occupation present the percentage of women and men.
+t = lambda x: 100 * x / float(x.sum())
+
+u8 = users.groupby(['occupation', 'gender']).agg({'gender': 'count'})
+u8_perc = u8.groupby(level=0).apply(t)
+print("viii. Percentages of women and men per occupation:")
+print(u8_perc)
+print('#',50*"-")
+# ----------------------------------------------------------------
 # Solution Class_Ex1: From the data table above, create an index to return all rows for
 # which the phylum name ends in "bacteria" and the value is greater than 1000.
 print("Solution Class_Ex1")
