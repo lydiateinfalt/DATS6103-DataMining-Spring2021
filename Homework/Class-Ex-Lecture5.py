@@ -11,6 +11,7 @@
 # i. Import Pandas and libraries that you think it is needed.
 import pandas as pd
 import numpy as np
+print("Solution HW_Ex1")
 # ii. Import the dataset from BB. The name of the dataset is Data2.txt.
 chipotle = pd.read_csv("data2.txt", sep="\t" )
 
@@ -90,7 +91,7 @@ print("Solution HW_E.3")
 # import pandas as pd # pandas already imported above
 import numpy as np
 # ii. Import the dataset from BB. The name of the dataset is Data.txt.
-users = pd.read_csv("//content//Data.txt", sep="|")
+users = pd.read_csv("Data.txt", sep="|")
 # iii. Assign it to a variable called users and print the 6 observation of it.
 print(users.head(6))
 # iv. Find what is the mean age for occupation.
@@ -137,7 +138,7 @@ print('#',50*"-")
 # Solution Clas_Ex2: Create a treatment column and add it to DataFrame that has 6 entries
 # which the first 4 are zero and the 5 and 6 element are 1 the rest are NAN
 print("Solution Class_Ex2")
-ff_ex2 = pd.DataFrame(np.nan, index=[0, 1, 2, 3, 4, 5, 6], columns=['A', 'B'])
+df_ex2 = pd.DataFrame(np.nan, index=[0, 1, 2, 3, 4, 5, 6], columns=['A', 'B'])
 df_ex2['treatment']=pd.Series([0, 0, 0, 0, 0, 1, 1])
 print(df_ex2)
 print('#',50*"-")
