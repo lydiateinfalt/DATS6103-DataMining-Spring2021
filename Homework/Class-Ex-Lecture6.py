@@ -1,3 +1,7 @@
+# Lydia Teinfalt
+# DATS 6103
+# 03/21/2021
+
 # =================================================================
 # Class_Ex1:
 # We will do some  manipulations on numpy arrays by importing some
@@ -16,8 +20,6 @@ from scipy import interpolate
 from scipy.interpolate import interp1d
 from scipy.stats import norm
 from scipy.stats import rv_histogram
-
-
 import matplotlib.pyplot as plt
 face = misc.face(gray=True) ## Modify the face function
 
@@ -192,8 +194,8 @@ print('#',50*"-")
 array = np.random.randn(100)
 norm_cdf = norm.cdf(array)
 norm_pdf = norm.pdf(array)
-print(norm_cdf)
-print(norm_pdf)
+# print(norm_cdf)
+# print(norm_pdf)
 mean = norm.mean(array)
 std = norm.std(array)
 print(mean)
