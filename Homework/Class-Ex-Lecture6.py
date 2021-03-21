@@ -209,10 +209,35 @@ print('#',50*"-")
 # Calculate p values.
 # ----------------------------------------------------------------
 
+# same sample sizes
+rvs1 = stats.norm.rvs(loc=5,scale=20,size=500)
+rvs2 = stats.norm.rvs(loc=5,scale=10,size=500)
+#different sample sizes
+rvs3 = stats.norm.rvs(loc=8, scale=20, size=100)
+t,p = stats.ttest_ind(rvs1,rvs2)
+alpha = 0.05
+print("Assume significance level \u03B1 = 0.05")
+print("T-Test between rvs1 and rvs2")
+t1, p1 = stats.ttest_ind(rvs1,rvs2)
+print("t-test_ind:            t = %g  p = %g" % (t, p))
+if p > alpha:
+    print("Accept null hypothesis")
+else:
+    print("Reject null hypothesis")
 
-
-
-
-
+# To account for unequal variance
+t1, p1 = stats.ttest_ind(rvs1,rvs2, equal_var = False)
+print("t-test_ind (with unequal variance):            t = %g  p = %g" % (t1, p1))
+if p1 > alpha:
+    print("Accept null hypothesis")
+else:
+    print("Reject null hypothesis")
+print("T-Test between rvs1 and rvs3, different sample sizes")
+t3, p3 = stats.ttest_ind(rvs1, rvs3, equal_var = False)
+print("t-test_ind :            t = %g  p = %g" % (t3, p3))
+if p3 > alpha:
+    print("Accept null hypothesis")
+else:
+    print("Reject null hypothesis")
 print('#',50*"-")
 # ----------------------------------------------------------------
