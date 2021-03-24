@@ -119,3 +119,101 @@ fout.close()
 print('#', 50 * "-")
 
 
+class Line:
+
+    # create two coordinates as attributes
+    def __init__(self, coor1, coor2):
+        self.xy1 = coor1
+        self.xy2 = coor2
+
+    def distance(self):
+        x1, y1 = self.xy1
+        x2, y2 = self.xy2
+        return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+    def slope(self):
+        x1, y1 = self.xy1
+        x2, y2 = self.xy2
+        return (y2 - y1) / (x2 - x1)
+# Example Output
+coordinate1 = (3, 2)
+coordinate2 = (8, 10)
+
+li = Line(coordinate1, coordinate2)
+print('#', 50 * "-")
+
+import matplotlib.path as mpath
+shape_description = [
+( 1., 2., mpath.Path.MOVETO),
+( 1., 1., mpath.Path.LINETO),
+( 2., 1., mpath.Path.LINETO),
+( 2., -1., mpath.Path.LINETO),
+( 1., -1., mpath.Path.LINETO),
+( 1., -2., mpath.Path.LINETO),
+(-1., -2., mpath.Path.LINETO),
+(-1., -1., mpath.Path.LINETO),
+(-2., -1., mpath.Path.LINETO),
+(-2., 1., mpath.Path.LINETO),
+(-1., 1., mpath.Path.LINETO),
+(-1., 2., mpath.Path.LINETO),
+( 0., 0., mpath.Path.CLOSEPOLY),
+]
+import numpy as np
+
+u, v, codes = zip(*shape_description)
+my_marker = mpath.Path(np.asarray((u, v)).T, codes)
+
+import matplotlib.pyplot as plt
+
+data = np.random.rand(10, 10)
+plt.scatter(data[:,0], data[:, 1], c = 'b', marker = my_marker, s = 120)
+plt.show()
+# bowtie shape
+shape_description1 = [
+( 0., 0., mpath.Path.MOVETO),
+( 0., 2., mpath.Path.LINETO),
+( 1., 1., mpath.Path.LINETO),
+( 2., 2., mpath.Path.LINETO),
+( 2., 0., mpath.Path.LINETO),
+( 1., 1., mpath.Path.LINETO),
+( 0., 0., mpath.Path.CLOSEPOLY),
+]
+#scatter plot with bow-tie shapes
+x, y, codes1 = zip(*shape_description1)
+my_marker1 = mpath.Path(np.asarray((x, y)).T, codes1)
+plt.scatter(data[:,0], data[:, 1], c = 'b', marker = my_marker1, s = 120)
+plt.show()
+
+#mathplotlib graph of a bow-tie
+from numpy import *
+from matplotlib.pyplot import *
+
+x=([0,0,1,2,2,1,0])
+y = ([0, 2, 1, 2, 0, 1,0])
+plot(x,y)
+show()
+
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.patches as pat
+
+fig, ax = plt.subplots()
+
+#create simple line plot
+ax.hlines(4,0,3)
+plt.vlines(8, 2, 4)
+ax.hlines(4,7,10)
+ax.hlines(2,8,10)
+ax.hlines(4,14,20)
+ax.hlines(2,14,20)
+plt.vlines(8, 2, 4)
+plt.vlines(20, 2, 2.2)
+plt.vlines(20, 3.7, 4)
+#add rectangle to plot
+ax.add_patch(Rectangle((3, 3),4,1.5))
+ax.add_patch(Rectangle((10, 3),4, 1.5))
+ax.add_patch(Rectangle((10, 1),4, 1.5))
+ax.add_patch(Rectangle((18, 2.2),4, 1.5))
+
+#display plot
+plt.show()
