@@ -214,7 +214,7 @@ print('#',50*"-")
 # same sample sizes
 rvs1 = stats.norm.rvs(loc=5,scale=20,size=500)
 rvs2 = stats.norm.rvs(loc=5,scale=10,size=500)
-#different sample sizes
+ #different sample sizes
 rvs3 = stats.norm.rvs(loc=8, scale=20, size=100)
 t,p = stats.ttest_ind(rvs1,rvs2)
 alpha = 0.05
@@ -238,8 +238,17 @@ print("T-Test between rvs1 and rvs3, different sample sizes")
 t3, p3 = stats.ttest_ind(rvs1, rvs3, equal_var = False)
 print("t-test_ind :            t = %g  p = %g" % (t3, p3))
 if p3 > alpha:
-    print("Accept null hypothesis")
+     print("Accept null hypothesis")
 else:
-    print("Reject null hypothesis")
+     print("Reject null hypothesis")
+
+print('Two-sample Kolmogorov-Smirnov tes')
+rvs1s = stats.norm.rvs(size=200, loc=0., scale=1)
+rvs2s = stats.norm.rvs(size=300, loc=0.5, scale=1.5)
+print(stats.ks_2samp(rvs1s, rvs2s))
+print('If p-value is less than .05, we reject the null hypothesis.')
+print('The two sample datasets do not come from the same distribution.')
+print('If the p-value was higher than alpha, then we could reject the hypothesis that the distributions of the two samples are the same. ')
 print('#',50*"-")
+
 # ----------------------------------------------------------------
